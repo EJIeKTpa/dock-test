@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: image
+  template:
+    metadata:
+      labels:
+        app: image
+    spec:
+      containers:
+        - name: image
+          image: image:0.0.1
+          command: ["java", "-jar", "hello.jar"]
+          ports:
+            - containerPort: 8080
