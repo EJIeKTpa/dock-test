@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: image
-  namespace: default
+  name: test
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: image
+      app: test
   template:
     metadata:
       labels:
-        app: image
+        app: test
     spec:
       containers:
-        - name: image
-          image: image:0.0.1
-          command: ["java", "-jar", "hello.jar"]
+        - name: test
+          image: ejiektpa/test:latest
           ports:
             - containerPort: 8080
